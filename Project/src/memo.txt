@@ -1,0 +1,244 @@
+// btn.setBorderPainted(false); 버튼 기본상태 외곽선 X
+// btn.setContentAreaFilled(false); 버튼 내부 채우기 X
+// btn.setFocusPainted(false); 버튼 선택시 외곽선 X
+// button.setOpaque(false); 버튼 투명하게
+
+========== 1. material 테이블 ==========
+재료번호(materialNum) / 재료분류(materialGroup) / 재료명(materialName) / 재료가격(materialPrice) / 유통기한(materialExpirationDate) / 재고(materialStock)
+drop table material;
+create table material(
+	materialNum varchar2(10) primary key,
+	materialGroup varchar2(20),
+	materialName varchar2(50),
+	materialPrice number,
+	materialExpirationDate date,
+	materialStock number
+);
+
+
+insert into material values('B01','빵','햄버거번',200,'2024-04-01',30);
+insert into material values('P01','패티','소고기',200,'2024-04-01',30);
+insert into material values('P02','패티','치킨',200,'2024-04-01',30);
+insert into material values('V01','야채','양상추',100,'2024-04-01',30);
+insert into material values('V02','야채','토마토',100,'2024-04-01',30);
+insert into material values('V03','야채','양파',100,'2024-04-01',30);
+insert into material values('S01','소스','머스마요소스',100,'2024-04-01',30);
+insert into material values('S02','소스','스리라차소스',100,'2024-04-01',30);
+insert into material values('S03','소스','닥터페퍼소스',100,'2024-04-01',30);
+insert into material values('S04','소스','시그니처소스',100,'2024-04-01',30);
+insert into material values('S11','소스','케찹',100,'2024-04-01',30);
+insert into material values('S12','소스','머스타드',100,'2024-04-01',10);
+insert into material values('E01','사이드','감자',50,'2024-04-01',20);
+insert into material values('E02','사이드','어니언링',50,'2024-04-01',10);
+insert into material values('E03','사이드','치킨너겟',100,'2024-04-01',10);
+insert into material values('D01','음료','탄산음료',300,'2024-04-01',10);
+insert into material values('D02','음료','커피',300,'2024-04-01',10);
+insert into material values('D03','음료','오렌지주스',300,'2024-04-01',10);
+insert into material values('G01','기타','햄버거포장지',10,'2024-04-01',30);
+insert into material values('G02','기타','감자튀김포장지',10,'2024-04-01',20);
+insert into material values('G03','기타','치킨너겟포장지',10,'2024-04-01',10);
+insert into material values('G04','기타','어니언링포장지',10,'2024-04-01',10);
+insert into material values('G05','기타','치아바타포장지',10,'2024-04-01',10);
+insert into material values('G11','기타','컵',50,'2024-04-01',30);
+insert into material values('G12','기타','빨대',10,'2024-04-01',30);
+commit;
+col materialNum for a5
+col materialGroup for a10
+col materialName for a15
+col materialPrice for 999
+col materialExpirationDate for a10
+col materialStock for 999
+select * from material;
+
+*** 유통기한이 오늘보다 전이면 해당 재료 재고 0으로 변경
+*** 재료는 재료명+유통기한별로 분류! -> 해당재료명의 총재고 따로 표시!
+*** 테이블에는 없지만 발주하는것도 생각!
+
+
+
+========== 2. products 테이블 ==========
+상품명(productName) / 구성(compose)
+drop table products;
+create table products(
+	productName varchar2(30) primary key,
+	compose varchar2(100)
+);
+insert into products values('시그니처버거','B01,P01,V01,V02,V03,S01,S04,G01');
+insert into products values('핫크리스피버거','B01,P02,V01,V03,S02,G01');
+insert into products values('감자튀김','E01,G02,S11');
+insert into products values('어니언링','E02,G03,S11');
+insert into products values('치킨너겟','E03,G04,S12');
+insert into products values('치아바타','E04,G05');
+insert into products values('탄산음료','D01,G11,G12');
+insert into products values('커피','D02,G11,G12');
+insert into products values('오렌지주스','D03,G11,G12');
+commit;
+col productName for a20
+col compose for a35
+select * from products;
+
+*** 사용되는 재료의 재고가 없으면 품절여부를 O로 변경
+*** 사용되는 재료의 재고 감소시키기 (유통기한 빠른것 먼저!) 
+
+
+
+========== 3. menu 테이블 ==========
+상품번호(menuNum) / 분류(menuGroup) / 상품명(menuName) / 가격(menuPrice) / 품절여부(soldOut)
+drop table menu;
+create table menu(
+	menuNum varchar2(10) primary key,
+	menuGroup varchar2(20),
+	menuName varchar2(50),
+	menuPrice number not null,
+	soldOut varchar2(1) default 'X' check(soldOut in('O','X'))
+);
+insert into menu values('A01','하우스스페셜','짜장팝싱글팩',6300,'X');
+insert into menu values('A02','하우스스페셜','짜계치팝싱글팩',8000,'X');
+insert into menu values('A03','하우스스페셜','시그니처투게더팩',15300,'X');
+insert into menu values('A04','하우스스페셜','시그니처파티팩',19900,'X');
+
+insert into menu values('B01','세트','(set)오리지널',5800,'X');
+insert into menu values('B02','세트','(set)시그니처',6600,'X');
+insert into menu values('B03','세트','(set)어메이징',7700,'X');
+insert into menu values('B04','세트','(set)그릴드불고기',4900,'X');
+insert into menu values('B05','세트','(set)메가바이트',6900,'X');
+insert into menu values('B06','세트','(set)메가바이트레드',6900,'X');
+insert into menu values('B07','세트','(set)갈릭앤갈릭',5700,'X');
+insert into menu values('B08','세트','(set)미트마니아',8100,'X');
+insert into menu values('B09','세트','(set)코울슬로치킨',6800,'X');
+insert into menu values('B10','세트','(set)스리라차치킨',6800,'X');
+insert into menu values('B11','세트','(set)오리지널새우',6600,'X');
+insert into menu values('B12','세트','(set)비스크치즈새우',7300,'X');
+insert into menu values('B13','세트','(set)치폴레핫치킨',6300,'X');
+insert into menu values('B14','세트','(set)페퍼로니피자치킨',8400,'X');
+insert into menu values('B15','세트','(set)더블치즈베이컨시그니처',7400,'X');
+insert into menu values('B16','세트','(set)콰트로맥앤치즈',7900,'X');
+insert into menu values('B17','세트','(set)트리플베이컨',8100,'X');
+insert into menu values('B18','세트','(set)짜장',4900,'X');
+insert into menu values('B19','세트','(set)짜계치',6600,'X');
+
+insert into menu values('C01','단품','오리지널',3900,'X');
+insert into menu values('C02','단품','시그니처',4800,'X');
+insert into menu values('C03','단품','어메이징',5800,'X');
+insert into menu values('C04','단품','그릴드불고기',2900,'X');
+insert into menu values('C05','단품','메가바이트',5000,'X');
+insert into menu values('C06','단품','메가바이트레드',5000,'X');
+insert into menu values('C07','단품','갈릭앤갈릭',3700,'X');
+insert into menu values('C08','단품','미트마니아',6300,'X');
+insert into menu values('C09','단품','코울슬로치킨',4900,'X');
+insert into menu values('C10','단품','스리라차치킨',4900,'X');
+insert into menu values('C11','단품','오리지널새우',4700,'X');
+insert into menu values('C12','단품','비스크치즈새우',5400,'X');
+insert into menu values('C13','단품','치폴레핫치킨',4400,'X');
+insert into menu values('C14','단품','페퍼로니피자치킨',6700,'X');
+insert into menu values('C15','단품','더블치즈베이컨시그니처',5500,'X');
+insert into menu values('C16','단품','콰트로맥앤치즈',6100,'X');
+insert into menu values('C17','단품','트리플베이컨',6300,'X');
+insert into menu values('C18','단품','짜장',2900,'X');
+insert into menu values('C19','단품','짜계치',4600,'X');
+
+insert into menu values('D01','사이드','감자튀김(M)',1900,'X');
+insert into menu values('D02','사이드','감자튀김(L)',2500,'X');
+insert into menu values('D03','사이드','슈가버터프라이',3000,'X');
+insert into menu values('D04','사이드','어니언링(6조각)',2800,'X');
+insert into menu values('D05','사이드','크리스피너겟(3조각)',1900,'X');
+insert into menu values('D06','사이드','크리스피너겟(5조각)',2900,'X');
+insert into menu values('D07','사이드','크런치윙(2조각)',3300,'X');
+insert into menu values('D08','사이드','크런치윙(4조각)',5700,'X');
+insert into menu values('D09','사이드','크런치오징어(3조각)',2800,'X');
+insert into menu values('D10','사이드','팝콘만두(5조각)',1500,'X');
+insert into menu values('D11','사이드','허브순살치킨런(M)',9900,'X');
+insert into menu values('D12','사이드','허브순살치킨런(L)',18900,'X');
+insert into menu values('D13','사이드','크리스피상하이포크(S)',4400,'X');
+insert into menu values('D14','사이드','크리스피상하이포크(L)',15400,'X');
+
+insert into menu values('E01','샐러드','상하이포크샐러드',4900,'X');
+insert into menu values('E02','샐러드','치킨시저샐러드',4900,'X');
+insert into menu values('E03','샐러드','그린샐러드',3700,'X');
+insert into menu values('E04','샐러드','베러샐러드',4900,'X');
+
+insert into menu values('F01','음료','탄산음료',1500,'X');
+insert into menu values('F02','음료','콜라(캔)',1500,'X');
+insert into menu values('F03','음료','사이다(캔)',1500,'X');
+insert into menu values('F04','음료','제로콜라(캔)',1500,'X');
+insert into menu values('F05','음료','제로사이다(캔)',1500,'X');
+insert into menu values('F06','음료','청귤라임에이드',2500,'X');
+insert into menu values('F07','음료','한라봉패션후르츠에이드',2500,'X');
+insert into menu values('F08','음료','오렌지주스',2500,'X');
+insert into menu values('F09','음료','아메리카노',1500,'X');
+insert into menu values('F10','음료','캐모마일티',2000,'X');
+insert into menu values('F11','음료','페퍼민트티',2000,'X');
+insert into menu values('F12','음료','생수',1000,'X');
+commit;
+col menuNum for a10
+col menuGroup for a10
+col menuName for a20
+col menuPrice for 99999
+col soldOut for a2
+select * from menu;
+
+
+
+========== 4. orderMenu 테이블 ==========
+주문번호(orderNum) / 주문내역(orderMenu) / 주문수량(orderCount) / 주문금액(orderPrice) / 주문날짜(orderDay)
+drop table orderMenu;
+create table orderMenu(
+	orderNum number,
+	orderMenu varchar2(100),
+	orderCount number,
+	orderPrice number,
+	orderDay date default sysdate
+);
+insert into orderMenu values(1,'오리지널',1,3900,'2024-02-11');
+insert into orderMenu values(2,'(set)시그니처',1,6600,'2024-02-12');
+insert into orderMenu values(3,'메가바이트',1,6900,'2024-02-13');
+insert into orderMenu values(4,'슈가버터프라이',3,9000,'2024-02-13');
+insert into orderMenu values(5,'상하이포크샐러드',1,4900,'2024-02-15');
+insert into orderMenu values(6,'오리지널',1,3900,'2024-02-15');
+insert into orderMenu values(7,'페퍼로니피자치킨',1,6700,'2024-02-15');
+insert into orderMenu values(8,'슈가버터프라이',1,3000,'2024-02-18');
+insert into orderMenu values(9,'시그니처',1,4800,'2024-02-19');
+insert into orderMenu values(10,'메가바이트',1,6900,'2024-02-20');
+insert into orderMenu values(11,'치킨시저샐러드',1,4900,'2024-02-21');
+insert into orderMenu values(12,'오리지널',1,3900,'2024-02-22');
+insert into orderMenu values(13,'메가바이트',1,6900,'2024-02-23');
+insert into orderMenu values(14,'오리지널',1,3900,'2024-02-25');
+insert into orderMenu values(15,'상하이포크샐러드',2,9800,'2024-02-25');
+insert into orderMenu values(16,'오리지널',1,3900,'2024-02-26');
+insert into orderMenu values(17,'치킨시저샐러드',1,4900,'2024-02-27');
+insert into orderMenu values(18,'시그니처',1,4800,'2024-02-28');
+insert into orderMenu values(19,'시그니처',1,4800,'2024-02-28');
+insert into orderMenu values(20,'상하이포크샐러드',2,9800,'2024-03-01');
+insert into orderMenu values(21,'오리지널',1,3900,'2024-03-02');
+insert into orderMenu values(22,'오리지널',1,3900,'2024-03-05');
+insert into orderMenu values(23,'시그니처',1,4800,'2024-03-05');
+insert into orderMenu values(24,'짜장팝싱글팩',1,6300,'2024-03-05');
+insert into orderMenu values(25,'상하이포크샐러드',1,4900,'2024-03-06');
+insert into orderMenu values(26,'메가바이트레드',1,6900,'2024-03-07');
+insert into orderMenu values(27,'시그니처',1,4800,'2024-03-08');
+insert into orderMenu values(28,'오리지널',1,3900,'2024-03-10');
+insert into orderMenu values(29,'치킨시저샐러드',1,4900,'2024-03-11');
+insert into orderMenu values(30,'상하이포크샐러드',2,9800,'2024-03-12');
+insert into orderMenu values(31,'시그니처파티팩',1,19900,'2024-03-12');
+insert into orderMenu values(32,'오리지널',1,3900,'2024-03-13');
+commit;
+
+*** 주문날짜별 (일/주/월/년 -> 총매출)
+
+
+
+========== 5. coupon 테이블 ==========
+쿠폰번호(couponNum) / 상품명(menuName) / 유효기간(couponExpirationDate) / 사용가능여부(usingCoupon)
+drop table coupon;
+create table coupon(
+	couponNum varchar2(30) primary key,
+	menuName varchar2(30),
+	couponExpirationDate date,
+	usingCoupon varchar2(1) default 'O' check(usingCoupon in('O','X'))
+);
+insert into coupon values('SPECIALCOUPON777','st01','2024-07-07','O');
+insert into coupon values('EVENTCOUPON222','st02','2024-12-12','O');
+commit;
+col couponNum for a20
+col menuName for a5
+select * from coupon;
