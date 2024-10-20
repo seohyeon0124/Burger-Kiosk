@@ -57,7 +57,7 @@
 #### []
 - 이메일 주소와 비밀번호를 입력하면 입력창에서 바로 유효성 검사가 진행되고 통과하지 못한 경우 각 경고 문구가 입력창 하단에 표시됩니다.
 - 이메일 주소의 형식이 유효하지 않거나 비밀번호가 6자 미만일 경우에는 각 입력창 하단에 경구 문구가 나타납니다.
-<img src="https://github.com/user-attachments/assets/e2cbd836-5fd4-4a76-9bf2-96e1ac17a725">
+<img src="https://github.com/user-attachments/assets/e2cbd836-5fd4-4a76-9bf2-96e1ac17a725" width="200px">
 <img src="https://github.com/user-attachments/assets/a6ca889e-c832-47d8-a18c-fed5656f0aed">
 <img src="https://github.com/user-attachments/assets/e074aa05-41f3-4a06-b27a-1db245b5d560">
 <img src="https://github.com/user-attachments/assets/78286508-2bb3-46eb-a0af-16d0ed3b14a5">
