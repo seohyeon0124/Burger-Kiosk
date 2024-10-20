@@ -58,7 +58,15 @@
 - 이메일 주소와 비밀번호를 입력하면 입력창에서 바로 유효성 검사가 진행되고 통과하지 못한 경우 각 경고 문구가 입력창 하단에 표시됩니다.
 - 이메일 주소의 형식이 유효하지 않거나 비밀번호가 6자 미만일 경우에는 각 입력창 하단에 경구 문구가 나타납니다.
 <img src="https://github.com/user-attachments/assets/e2cbd836-5fd4-4a76-9bf2-96e1ac17a725">
-<img src="https://github.com/user-attachments/assets/e2cbd836-5fd4-4a76-9bf2-96e1ac17a725">
+<img src="https://github.com/user-attachments/assets/a6ca889e-c832-47d8-a18c-fed5656f0aed">
+<img src="https://github.com/user-attachments/assets/assets/e074aa05-41f3-4a06-b27a-1db245b5d560">
+<img src="https://github.com/user-attachments/assets/assets/78286508-2bb3-46eb-a0af-16d0ed3b14a5">
+<img src="https://github.com/user-attachments/assets/assets/aa0f17b4-7ba2-410a-bb84-17be7c0a511f">
+<img src="https://github.com/user-attachments/assets/assets/bcf6d5ec-cb9b-4426-ae1b-cbd3ff4fa767">
+<img src="https://github.com/user-attachments/assets/assets/7260bb6d-df14-45a4-a8ac-036475c4b20d">
+<img src="https://github.com/user-attachments/assets/assets/70dceb4f-2be0-4f19-81ec-06c3761d3330">
+<img src="https://github.com/user-attachments/assets/assets/0bc87698-4739-4b0f-80fe-3bc5c736403e">
+<img src="https://github.com/user-attachments/assets/assets/85e3c257-c982-4eff-a970-e1aa2bd76fc7">
 
 #### [기능입니다]
 - 이메일 주소와 비밀번호를 입력하면 입력창에서 바로 유효성 검사가 진행되고 통과하지 못한 경우 각 경고 문구가 입력창 하단에 표시됩니다.
