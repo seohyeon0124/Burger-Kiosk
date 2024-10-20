@@ -66,7 +66,6 @@
 - 전체취소 버튼 클릭시 장바구니가 모두 비워집니다.
 - 장바구니에 담긴 메뉴의 총금액은 하단에 표시됩니다.
 <img src="https://github.com/user-attachments/assets/a6ca889e-c832-47d8-a18c-fed5656f0aed">
-<img src="https://github.com/user-attachments/assets/e074aa05-41f3-4a06-b27a-1db245b5d560">
 
 #### [쿠폰사용]
 - 쿠폰사용 버튼을 눌러 발급받은 쿠폰 코드 입력을 통해 쿠폰을 사용할 수 있습니다.
@@ -76,7 +75,7 @@
 #### [주문하기]
 - 메뉴를 담은 뒤 주문하기 버튼을 통해 결제를 진행할 수 있습니다.
 - 주문시 해당 주문내역의 주문번호가 안내됩니다.
-<img src="https://github.com/user-attachments/assets/78286508-2bb3-46eb-a0af-16d0ed3b14a5">
+<img src="https://github.com/user-attachments/assets/e074aa05-41f3-4a06-b27a-1db245b5d560">
 
 ### 🌱 관리자 화면면
 
@@ -90,9 +89,7 @@
 - 주문 번호, 상품, 날짜에 따라 정렬된 주문 내역 조회가 가능합니다. (정렬)
 - 원하는 조회 방식에 따른 총 매출이 하단에 표시됩니다.
 - 삭제 버튼을 통해 원하는 주문 내역 정보를 삭제할 수 있습니다. (삭제)
-
-<img src="https://github.com/user-attachments/assets/aa0f17b4-7ba2-410a-bb84-17be7c0a511f">
-<img src="https://github.com/user-attachments/assets/bcf6d5ec-cb9b-4426-ae1b-cbd3ff4fa767">
+<img src="https://github.com/user-attachments/assets/78286508-2bb3-46eb-a0af-16d0ed3b14a5">
 
 #### [메뉴관리(조회/추가/수정/삭제/필터/정렬)]
 - 매장 내의 모든 메뉴를 조회할 수 있습니다. 메뉴 정보에는 상품 코드, 카테고리 분류, 상품명, 가격 등이 포함됩니다. (조회)
@@ -101,8 +98,10 @@
 - 추가 버튼을 통해 원하는 메뉴 정보를 추가할 수 있습니다. 이때 상품분류, 상품명, 상품가격, 이미지를 반드시 선택해야하며, 상품 코드는 상품 분류에 따라 자동으로 입력됩니다. (추가)
 - 변경 버튼을 통해 원하는 메뉴 정보를 수정할 수 있습니다. (수정)
 - 삭제 버튼을 통해 원하는 메뉴 정보를 삭제할 수 있습니다. (삭제)
-<img src="https://github.com/user-attachments/assets/7260bb6d-df14-45a4-a8ac-036475c4b20d">
-<img src="https://github.com/user-attachments/assets/70dceb4f-2be0-4f19-81ec-06c3761d3330">
+- 메뉴 정보 추가/변경/삭제시 결과는 사용자 화면에서 바로 확인 가능합니다.
+<img src="https://github.com/user-attachments/assets/aa0f17b4-7ba2-410a-bb84-17be7c0a511f">
+<img src="https://github.com/user-attachments/assets/bcf6d5ec-cb9b-4426-ae1b-cbd3ff4fa767">
+<img src="https://github.com/user-attachments/assets/0bc87698-4739-4b0f-80fe-3bc5c736403e">
 
 #### [쿠폰관리(조회/추가/수정/삭제/필터/정렬)]
 - 주문시 사용가능한 쿠폰 관련 정보를 조회할 수 있습니다. 쿠폰 정보에는 쿠폰코드, 상품명, 유효기간이 포함됩니다. (조회)
@@ -111,7 +110,8 @@
 - 추가 버튼을 통해 원하는 쿠폰 정보를 추가할 수 있습니다. 이때 쿠폰코드, 상품명, 유효기간을 반드시 선택해야합니다. (추가)
 - 변경 버튼을 통해 원하는 쿠폰 정보를 수정할 수 있습니다. (수정)
 - 삭제 버튼을 통해 원하는 쿠폰 정보를 삭제할 수 있습니다. (삭제)
-<img src="https://github.com/user-attachments/assets/0bc87698-4739-4b0f-80fe-3bc5c736403e">
+<img src="https://github.com/user-attachments/assets/7260bb6d-df14-45a4-a8ac-036475c4b20d">
+<img src="https://github.com/user-attachments/assets/70dceb4f-2be0-4f19-81ec-06c3761d3330">
 
 <br>
 
