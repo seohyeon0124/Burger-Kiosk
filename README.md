@@ -113,7 +113,7 @@
 <img src="https://github.com/user-attachments/assets/7260bb6d-df14-45a4-a8ac-036475c4b20d">
 <img src="https://github.com/user-attachments/assets/70dceb4f-2be0-4f19-81ec-06c3761d3330">
 
-<br>
+<br><br>
 
 ## 4. 개선할 부분
 
